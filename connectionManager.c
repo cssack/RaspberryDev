@@ -10,7 +10,10 @@ static int clientSocket = -1;
 
 void conn_waitForClient(int port)
 {
-	while (connectWithClient(port) != EXIT_SUCCESS){};
+	while (connectWithClient(port) != EXIT_SUCCESS)
+	{
+		sleep(1);
+	}
 }
 
 size_t conn_read(uint8_t *buffer, size_t amount)
@@ -22,7 +25,7 @@ size_t conn_read(uint8_t *buffer, size_t amount)
 		if (readed <= 0)
 		{
 			releaseWithError("Could not read to end.");
-			return -1;
+			return EXIT_FAILURE;
 		}
 		total += readed;
 	}
@@ -38,7 +41,7 @@ size_t conn_write(uint8_t *buffer, size_t amount)
 		if (sended == -1)
 		{
 			releaseWithError("Could not send to end.");
-			return -1;
+			return EXIT_FAILURE;
 		}
 		total += sended;
 	}
@@ -47,8 +50,8 @@ size_t conn_write(uint8_t *buffer, size_t amount)
 
 void conn_close()
 {
-	closeSocket(clientSocket);
 	closeSocket(listenerSocket);
+	closeSocket(clientSocket);
 }
 
 static int connectWithClient(int port)
@@ -59,6 +62,14 @@ static int connectWithClient(int port)
 		releaseWithError("Could not open SOCKET.");
 		return EXIT_FAILURE;
 	}
+
+	int value = 1;
+	if (setsockopt(listenerSocket, SOL_SOCKET, SO_REUSEADDR, &value, sizeof(value)) != 0)
+	{
+		releaseWithError("Could not set socket option");
+		return EXIT_FAILURE;
+	}
+
 	
 	struct sockaddr_in saddr;
 	socklen_t addrSize = (socklen_t) sizeof(saddr);
@@ -81,14 +92,13 @@ static int connectWithClient(int port)
 
 	if ((clientSocket = accept(listenerSocket, (struct sockaddr *) &clientAddr, &addrSize)) == -1)
 	{
-		closeSocket(clientSocket);
-		closeSocket(listenerSocket);
+		releaseWithError("Client could not connect.");
 		return EXIT_FAILURE;
 	}
 
 	closeSocket(listenerSocket);
 
-	fprintf(stdout, "Client is connected.\n");
+	fprintf(stdout, "Client [%s] is connected.\n", inet_ntoa(clientAddr.sin_addr));
 	return EXIT_SUCCESS;
 }
 
