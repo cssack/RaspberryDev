@@ -1,35 +1,45 @@
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
 bin/
+obj/
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# Visual Studio 2015 cache/options directory
+.vs/
 
-# Precompiled Headers
-*.gch
-*.pch
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# NuGet Packages
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!*.[Cc]ache/
 
-# Debug files
-*.dSYM/
-*.su
+# SQL Server files
+*.mdf
+*.ldf
+
+# Node.js Tools for Visual Studio
+.ntvs_analysis.dat
+
+#Christian Sack Relevants
+App_Data/
+*gitignore.*
