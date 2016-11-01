@@ -17,6 +17,34 @@
 
 #define PENDINGS (1)
 
+
+struct GpioRange
+{
+	unsigned int Led0 : 1;
+	unsigned int Led1 : 1;
+	unsigned int Led2 : 1;
+	unsigned int Led3 : 1;
+	unsigned int Led4 : 1;
+	unsigned int Led5 : 1;
+	unsigned int Led6 : 1;
+	unsigned int Led7 : 1;
+	unsigned int Led8 : 1;
+	unsigned int Led9 : 1;
+	unsigned int Led10 : 1;
+	unsigned int Led11 : 1;
+	unsigned int Led12 : 1;
+	unsigned int Led13 : 1;
+	unsigned int Led14 : 1;
+	unsigned int Led15 : 1;
+};
+
+
+struct Power 
+{
+	struct GpioRange mask : 16;
+	struct GpioRange value : 16;
+};
+
 /**
  * @brief used for openening the server, listening on port, waiting for a client to connect.
  * @param port the port the server will listen on for clients.
