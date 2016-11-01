@@ -20,6 +20,7 @@ namespace SapiController.protocol._shared
 {
 	public class SapiGpio : Base
 	{
+		public static byte RequestByte = 1;
 		private ReadOnlyObservableCollection<Entry> _pins;
 		private ObservableCollection<Entry> _writeablePins;
 		private ObservableCollection<Entry> WriteablePins => _writeablePins ?? (_writeablePins = new ObservableCollection<Entry>());
@@ -31,11 +32,11 @@ namespace SapiController.protocol._shared
 
 
 
-		public void Interpret(GpioPins gpio)
+		public void Interpret(IoPins gpio)
 		{
-			foreach (var pin in Enum.GetValues(typeof(GpioPins)).Cast<ushort>().Select(x => (GpioPins) x))
+			foreach (var pin in Enum.GetValues(typeof(IoPins)).Cast<ushort>().Select(x => (IoPins) x))
 			{
-				if ((pin == GpioPins.All) || (pin == GpioPins.None))
+				if ((pin == IoPins.All) || (pin == IoPins.None))
 					continue;
 
 				var entry = WriteablePins.FirstOrDefault(x => x.Pin == pin);
@@ -55,10 +56,10 @@ namespace SapiController.protocol._shared
 			private readonly ProcessLock _lock = new ProcessLock();
 			private string _alias;
 			private bool _originalValue;
-			private GpioPins _pin;
+			private IoPins _pin;
 			private bool _value;
 
-			public Entry(GpioPins pin)
+			public Entry(IoPins pin)
 			{
 				Pin = pin;
 				Alias = pin.GetName();
@@ -66,7 +67,7 @@ namespace SapiController.protocol._shared
 
 
 			///<summary>The associated pin</summary>
-			public GpioPins Pin
+			public IoPins Pin
 			{
 				get { return _pin; }
 				set { SetProperty(ref _pin, value); }

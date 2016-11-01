@@ -50,6 +50,7 @@
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
+			<GlyphIconButton Icon="E_Upload" Click="Upload" Content="Upload" HorizontalAlignment="Right" />
 		</EditorGroup>
 
 

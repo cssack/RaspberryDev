@@ -74,6 +74,29 @@ namespace SapiController
 				Gpio.Interpret(State.GpioState);
 			});
 		}
+		/// <summary>Downloads the details of the sapi controller.</summary>
+		public void SendNewConfig()
+		{
+			ushort values = 0;
+			ushort mask = 0;
+
+			foreach (var gpioPin in Gpio.Pins)
+			{
+				if (!gpioPin.HasChanged)
+					continue;
+
+				mask = (ushort) (mask | (ushort) gpioPin.Pin);
+				values = (ushort) (values | (gpioPin.Value ? 1 : 0) << gpioPin.Pin.GetShifter());
+			}
+
+			Do((writer, reader) =>
+			{
+				writer.Write(SapiGpio.RequestByte);
+				writer.Write(values);
+				writer.Write(mask);
+			});
+			DownloadDetails();
+		}
 
 
 

@@ -22,7 +22,7 @@ namespace SapiController.protocol
 		public static byte RequestByte = 0;
 
 
-		private GpioPins _gpioState;
+		private IoPins _gpioState;
 		private TimeSpan _runtime;
 		private int _temperature;
 
@@ -41,7 +41,7 @@ namespace SapiController.protocol
 			private set { SetProperty(ref _runtime, value); }
 		}
 		///<summary>The current GPIO state of the SAPI.</summary>
-		public GpioPins GpioState
+		public IoPins GpioState
 		{
 			get { return _gpioState; }
 			private set { SetProperty(ref _gpioState, value); }
@@ -51,7 +51,7 @@ namespace SapiController.protocol
 		{
 			Temperature = rd.ReadInt32();
 			Runtime = TimeSpan.FromMilliseconds(rd.ReadInt32());
-			GpioState = (GpioPins) rd.ReadUInt16();
+			GpioState = (IoPins) rd.ReadUInt16();
 		}
 	}
 }

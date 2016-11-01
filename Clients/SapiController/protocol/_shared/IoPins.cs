@@ -14,11 +14,8 @@ using CsWpfBase.Ev.Attributes;
 
 namespace SapiController.protocol._shared
 {
-
-
-
 	[Flags]
-	public enum GpioPins : ushort
+	public enum IoPins : ushort
 	{
 		[EnumDescription("Physical: 11")] Pin0 = 1 << 0,
 		[EnumDescription("Physical: 12")] Pin1 = 1 << 1,
@@ -38,5 +35,15 @@ namespace SapiController.protocol._shared
 		[EnumDescription("Physical: 38")] Pin15 = 1 << 15,
 		All = ushort.MaxValue,
 		None = ushort.MinValue,
+	}
+
+
+
+	public static class IoPinsExtensions
+	{
+		public static int GetShifter(this IoPins pin)
+		{
+			return Convert.ToInt32(pin.ToString().Substring(3));
+		}
 	}
 }

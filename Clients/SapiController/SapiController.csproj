@@ -57,7 +57,7 @@
     <Compile Include="protocol\SapiState.cs" />
     <Compile Include="protocol\_shared\SapiGpio.cs" />
     <Compile Include="SapiConnection.cs" />
-    <Compile Include="protocol\_shared\GpioPins.cs" />
+    <Compile Include="protocol\_shared\IoPins.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

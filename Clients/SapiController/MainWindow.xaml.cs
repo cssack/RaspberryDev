@@ -59,6 +59,17 @@ namespace SapiController
 
 
 
-		
+
+		private void Upload(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				Connection.SendNewConfig();
+			}
+			catch(Exception)
+			{
+
+			}
+		}
 	}
 }
