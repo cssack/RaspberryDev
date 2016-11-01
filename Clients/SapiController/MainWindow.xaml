@@ -1,17 +1,58 @@
 ﻿<CsWindow x:Class="SapiController.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        Title="SAPI Controller" Height="350" Width="525">
-    <Grid>
-        <Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="Auto"/>
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:shared="clr-namespace:SapiController.protocol._shared"
+		mc:Ignorable="d"
+		Title="SAPI Controller" Height="350" Width="525" x:Name="Wind" FooterVisibility="Collapsed" IconVisibility="Collapsed" Padding="10">
+	<Grid DataContext="{Binding ElementName=Wind, Path=Connection}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
-		
-		
-		
-    </Grid>
+
+		<EditorGroup Header="State" Editor.IsReadOnly="True">
+			<TimeSpanEditor Header="Runtime" ValueTimeSpan="{Binding Path=State.Runtime, Mode=OneWay}" />
+			<Int32Editor Header="Temperature" ValueNumber="{Binding Path=State.Temperature, Mode=OneWay}" />
+		</EditorGroup>
+		<EditorGroup Grid.Row="1" Header="State">
+			<ItemsControl ItemsSource="{Binding Path=Gpio.Pins}" Margin="0,0,-20,0" HorizontalAlignment="Left">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<UniformGrid Columns="2" Grid.IsSharedSizeScope="True" />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate DataType="{x:Type shared:SapiGpio+Entry}">
+						<BoolEditor Value="{Binding Path=Value}" Header="{Binding Path=Pin}" Margin="1,1,20,1" ValueTrueText="AN" ValueFalseText="ABGESCHALTET" HorizontalAlignment="Left" MinWidth="190">
+							<BoolEditor.Style>
+								<Style TargetType="BoolEditor">
+									<Style.Triggers>
+										<DataTrigger Binding="{Binding Path=Value}" Value="True">
+											<Setter Property="Icon" Value="G_Flash" />
+											<Setter Property="IconColor" Value="{StaticResource GColor-Green}" />
+										</DataTrigger>
+										<DataTrigger Binding="{Binding Path=Value}" Value="False">
+											<Setter Property="Icon" Value="G_Flash" />
+											<Setter Property="IconColor" Value="{StaticResource GColor-Red}" />
+										</DataTrigger>
+										<DataTrigger Binding="{Binding Path=HasChanged}" Value="True">
+											<Setter Property="Icon" Value="G_Warning_Sign" />
+											<Setter Property="IconColor" Value="{StaticResource GColor-Blue}" />
+										</DataTrigger>
+									</Style.Triggers>
+								</Style>
+							</BoolEditor.Style>
+						</BoolEditor>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</EditorGroup>
+
+
+		<GlyphIconButton Grid.Row="3" Icon="E_Download" Click="Load" Content="Download" HorizontalAlignment="Right" />
+	</Grid>
 </CsWindow>
