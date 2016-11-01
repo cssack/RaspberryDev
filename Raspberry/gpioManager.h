@@ -8,8 +8,32 @@
 
 #define LED (0)
 
+
+enum LedSet
+{
+	Led0 = 1 << 0,
+	Led1 = 1 << 1,
+	Led2 = 1 << 2,
+	Led3 = 1 << 3,
+	Led4 = 1 << 4,
+	Led5 = 1 << 5,
+	Led6 = 1 << 6,
+	Led7 = 1 << 7,
+	Led8 = 1 << 8,
+	Led9 = 1 << 9,
+	Led10 = 1 << 10,
+	Led11 = 1 << 11,
+	Led12 = 1 << 12,
+	Led13 = 1 << 13,
+	Led14 = 1 << 14,
+	Led15 = 1 << 15
+};
+
+
+
 void gpio_power(uint8_t power);
 void gpio_init();
+enum LedSet gpio_state();
 /*
 
  +-----+-----+---------+------+---+---Pi 3---+---+------+---------+-----+-----+

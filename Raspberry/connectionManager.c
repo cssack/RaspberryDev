@@ -10,13 +10,13 @@ static int clientSocket = -1;
 
 void conn_waitForClient(int port)
 {
-	while (connectWithClient(port) != EXIT_SUCCESS)
+	while (connectWithClient(port) == CONNERROR)
 	{
 		sleep(1);
 	}
 }
 
-size_t conn_read(uint8_t *buffer, size_t amount)
+int conn_read(char* buffer, size_t amount)
 {
 	size_t total = 0;
 	while (total < amount)
@@ -25,14 +25,14 @@ size_t conn_read(uint8_t *buffer, size_t amount)
 		if (readed <= 0)
 		{
 			releaseWithError("Could not read to end.");
-			return EXIT_FAILURE;
+			return CONNERROR;
 		}
 		total += readed;
 	}
 	return total;
 }
 
-size_t conn_write(uint8_t *buffer, size_t amount)
+int conn_write(char* buffer, size_t amount)
 {
 	size_t total = 0;
 	while (total < amount)
@@ -41,7 +41,7 @@ size_t conn_write(uint8_t *buffer, size_t amount)
 		if (sended == -1)
 		{
 			releaseWithError("Could not send to end.");
-			return EXIT_FAILURE;
+			return CONNERROR;
 		}
 		total += sended;
 	}
@@ -60,14 +60,14 @@ static int connectWithClient(int port)
 	if ((listenerSocket = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 	{
 		releaseWithError("Could not open SOCKET.");
-		return EXIT_FAILURE;
+		return CONNERROR;
 	}
 
 	int value = 1;
 	if (setsockopt(listenerSocket, SOL_SOCKET, SO_REUSEADDR, &value, sizeof(value)) != 0)
 	{
 		releaseWithError("Could not set socket option");
-		return EXIT_FAILURE;
+		return CONNERROR;
 	}
 
 	
@@ -78,13 +78,13 @@ static int connectWithClient(int port)
 	if (bind(listenerSocket, (struct sockaddr *)&saddr, addrSize) != 0)
 	{
 		releaseWithError("Could not bind to port.");
-		return EXIT_FAILURE;
+		return CONNERROR;
 	}
 	
 	if (listen(listenerSocket, PENDINGS) != 0)
 	{
 		releaseWithError("Could not listen to socket.");
-		return EXIT_FAILURE;
+		return CONNERROR;
 	}
 	
 	fprintf(stdout, "Start listening for clients. Port [%d]....\n", port);
@@ -93,13 +93,13 @@ static int connectWithClient(int port)
 	if ((clientSocket = accept(listenerSocket, (struct sockaddr *) &clientAddr, &addrSize)) == -1)
 	{
 		releaseWithError("Client could not connect.");
-		return EXIT_FAILURE;
+		return CONNERROR;
 	}
 
 	closeSocket(listenerSocket);
 
 	fprintf(stdout, "Client [%s] is connected.\n", inet_ntoa(clientAddr.sin_addr));
-	return EXIT_SUCCESS;
+	return 0;
 }
 
 	
