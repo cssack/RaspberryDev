@@ -87,7 +87,7 @@ static int connectWithClient(int port)
 		return CONNERROR;
 	}
 	
-	fprintf(stdout, "Start listening for clients. Port [%d]....\n", port);
+	fprintf(stdout, "\n\n\nStart listening for clients. Port [%d]....\n", port);
 	struct sockaddr_in clientAddr;
 
 	if ((clientSocket = accept(listenerSocket, (struct sockaddr *) &clientAddr, &addrSize)) == -1)

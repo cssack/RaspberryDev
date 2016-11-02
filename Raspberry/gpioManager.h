@@ -31,7 +31,7 @@ enum LedSet
 
 
 
-void gpio_power(uint8_t power);
+void gpio_setValues(uint16_t values, uint16_t mask);
 void gpio_init();
 enum LedSet gpio_state();
 /*
