@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SapiController", "SapiController\SapiController.csproj", "{4E40DF08-6FAB-40E4-AD90-C96B9807D93D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_CsWpfBase", "..\..\CsGlobals\_CsWpfBase\_CsWpfBase.csproj", "{63CB4E91-9D9C-4C97-8097-FC3964593796}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPiProtocol", "SapiProtocol\PowerPiProtocol.csproj", "{9C0A2E8B-A144-4FCD-A6C7-183D098F70DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPi", "PowerPi\PowerPi.csproj", "{D5A73991-2B4B-4C0E-97E8-5A3AAA328294}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,14 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E40DF08-6FAB-40E4-AD90-C96B9807D93D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E40DF08-6FAB-40E4-AD90-C96B9807D93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E40DF08-6FAB-40E4-AD90-C96B9807D93D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4E40DF08-6FAB-40E4-AD90-C96B9807D93D}.Debug|x86.Build.0 = Debug|Any CPU
-		{4E40DF08-6FAB-40E4-AD90-C96B9807D93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E40DF08-6FAB-40E4-AD90-C96B9807D93D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E40DF08-6FAB-40E4-AD90-C96B9807D93D}.Release|x86.ActiveCfg = Release|Any CPU
-		{4E40DF08-6FAB-40E4-AD90-C96B9807D93D}.Release|x86.Build.0 = Release|Any CPU
 		{63CB4E91-9D9C-4C97-8097-FC3964593796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{63CB4E91-9D9C-4C97-8097-FC3964593796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63CB4E91-9D9C-4C97-8097-FC3964593796}.Debug|x86.ActiveCfg = Debug|x86
@@ -31,6 +25,22 @@ Global
 		{63CB4E91-9D9C-4C97-8097-FC3964593796}.Release|Any CPU.Build.0 = Release|Any CPU
 		{63CB4E91-9D9C-4C97-8097-FC3964593796}.Release|x86.ActiveCfg = Release|x86
 		{63CB4E91-9D9C-4C97-8097-FC3964593796}.Release|x86.Build.0 = Release|x86
+		{9C0A2E8B-A144-4FCD-A6C7-183D098F70DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0A2E8B-A144-4FCD-A6C7-183D098F70DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0A2E8B-A144-4FCD-A6C7-183D098F70DE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9C0A2E8B-A144-4FCD-A6C7-183D098F70DE}.Debug|x86.Build.0 = Debug|Any CPU
+		{9C0A2E8B-A144-4FCD-A6C7-183D098F70DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0A2E8B-A144-4FCD-A6C7-183D098F70DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C0A2E8B-A144-4FCD-A6C7-183D098F70DE}.Release|x86.ActiveCfg = Release|Any CPU
+		{9C0A2E8B-A144-4FCD-A6C7-183D098F70DE}.Release|x86.Build.0 = Release|Any CPU
+		{D5A73991-2B4B-4C0E-97E8-5A3AAA328294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A73991-2B4B-4C0E-97E8-5A3AAA328294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A73991-2B4B-4C0E-97E8-5A3AAA328294}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D5A73991-2B4B-4C0E-97E8-5A3AAA328294}.Debug|x86.Build.0 = Debug|Any CPU
+		{D5A73991-2B4B-4C0E-97E8-5A3AAA328294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A73991-2B4B-4C0E-97E8-5A3AAA328294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A73991-2B4B-4C0E-97E8-5A3AAA328294}.Release|x86.ActiveCfg = Release|Any CPU
+		{D5A73991-2B4B-4C0E-97E8-5A3AAA328294}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

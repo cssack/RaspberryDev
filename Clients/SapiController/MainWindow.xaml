@@ -6,7 +6,7 @@
 		xmlns:shared="clr-namespace:SapiController.protocol._shared"
 		mc:Ignorable="d"
 		Title="SAPI Controller" Height="350" Width="525" x:Name="Wind" FooterVisibility="Collapsed" IconVisibility="Collapsed" Padding="10">
-	<Grid DataContext="{Binding ElementName=Wind, Path=Connection}">
+	<Grid DataContext="{Binding ElementName=Wind, Path=Controller}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />

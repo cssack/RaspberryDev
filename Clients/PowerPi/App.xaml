@@ -1,0 +1,10 @@
+﻿<Application x:Class="PowerPi.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PowerPi"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+		<ResourceDictionary Source="/CsWpfBase;component/Themes/Standard.xaml" />
+
+	</Application.Resources>
+</Application>

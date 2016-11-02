@@ -24,23 +24,23 @@ namespace SapiController
 	public partial class MainWindow : CsWindow
 	{
 
-		/// <summary>The <see cref="DependencyProperty"/> for the <see cref="Connection" /> property.</summary>
-		public static readonly DependencyProperty ConnectionProperty = DependencyProperty.Register("Connection", typeof(SapiConnection), typeof(MainWindow), new FrameworkPropertyMetadata
+		/// <summary>The <see cref="DependencyProperty"/> for the <see cref="Controller" /> property.</summary>
+		public static readonly DependencyProperty ControllerProperty = DependencyProperty.Register("Connection", typeof(SapiController), typeof(MainWindow), new FrameworkPropertyMetadata
 		{
 			//PropertyChangedCallback = (o, args) => ((MainWindow)o).ConnectionDpChanged((SapiConnection)args.OldValue, (SapiConnection)args.NewValue),
-			DefaultValue = default(SapiConnection),
+			DefaultValue = default(SapiController),
 			DefaultUpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
 		});
 
 		/// <summary>The SAPI Connection</summary>
-		public SapiConnection Connection
+		public PowerPiProtocol.PowerPiController Controller
 		{
-			get { return (SapiConnection) GetValue(ConnectionProperty); }
-			set { SetValue(ConnectionProperty, value); }
+			get { return (PowerPiProtocol.PowerPiController) GetValue(ControllerProperty); }
+			set { SetValue(ControllerProperty, value); }
 		}
 		public MainWindow()
 		{
-			Connection = new SapiConnection("sapi", 12345);
+			Controller = new SapiController("sapi", 12345);
 			InitializeComponent();
 		}
 
@@ -49,7 +49,7 @@ namespace SapiController
 		{
 			try
 			{
-				Connection.DownloadDetails();
+				Controller.DownloadDetails();
 			}
 			catch (Exception)
 			{
@@ -64,7 +64,7 @@ namespace SapiController
 		{
 			try
 			{
-				Connection.SendNewConfig();
+				Controller.SendNewConfig();
 			}
 			catch(Exception)
 			{
