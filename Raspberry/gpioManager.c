@@ -2,7 +2,7 @@
 
 #define TRANSLATORCOUNT 16
 
-static const int translator[TRANSLATORCOUNT] = {0,1,2,3,4,5,6,7,21,22,23,24,25,26,27,28};
+static const int translator[TRANSLATORCOUNT] = {7, 0, 1, 2, 3, 4, 5, 6, 21, 22, 26, 23, 24, 27, 25, 28};
 
 void gpio_init()
 {
