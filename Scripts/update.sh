@@ -1,6 +1,9 @@
 #!/bin/bash
 
-TARGET=/home/cs/scripts/output/update.state
+FOLDER=/home/cs/output
+TARGET=$FOLDER/update.state
+
+mkdir -p $FOLDER
 
 echo "Starting with update on $(date)"
 echo "Update from $(date)" > $TARGET
