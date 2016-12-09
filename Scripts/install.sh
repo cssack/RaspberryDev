@@ -73,9 +73,15 @@ echo " "
 
 cp ./files/vimrc ~/.vimrc
 echo ".vimrc created"
+
 cp ./files/motd /etc/motd
 echo "motd created"
+
 cp ./files/selected_editor ~/.selected_editor
 echo "selected_editor created"
+
 cp ./files/jail.local /etc/fail2ban/jail.local
 echo "jail.local created"
+
+cp ./files/binscripts/* ~/bin/
+echo "bin scripts created"
