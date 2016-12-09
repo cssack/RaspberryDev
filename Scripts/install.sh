@@ -59,6 +59,13 @@ sudo apt-get --assume-yes install tcpdump
 echo " "
 echo " "
 echo " "
+echo "*************************  INSTALLING nmap ************************"
+sudo apt-get --assume-yes install nmap
+
+
+echo " "
+echo " "
+echo " "
 echo " "
 echo " "
 echo " "
