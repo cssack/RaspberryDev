@@ -60,6 +60,14 @@ echo " "
 echo "*************************  INSTALLING nmap ************************"
 sudo apt-get --assume-yes install nmap
 
+
+echo " "
+echo " "
+echo " "
+echo "*************************  INSTALLING arp-scan ********************"
+sudo apt-get --assume-yes install arp-scan
+
+
 echo " "
 echo " "
 echo " "

@@ -35,8 +35,5 @@ sudo cp $DIR/_configFiles/jail.local /etc/fail2ban/jail.local
 
 echo "--> COPY bin files"
 mkdir -p ~/bin/
-cp $DIR/_binFiles/* ~/bin/
-
-echo "--> COPY cs_reload"
-targetLink="${HOME}/bin/cs_reload"
-ln -s "$DIR/copyFiles.sh" "$targetLink"
+ln -s $DIR/_binFiles/* ~/bin/
+ln -s "$DIR/copyFiles.sh" "${HOME}/bin/cs_reload"
