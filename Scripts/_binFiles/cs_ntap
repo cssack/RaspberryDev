@@ -23,7 +23,10 @@ sudo ifconfig eth1 up
 echo "----> CONFIGURE BRIDGE using DHCP"
 sudo dhclient nTap
 
-echo "----> START filtered tcpdump"
+read  -n 1 -p "----> START arp-scan (PRESS ANY KEY)" mainmenuinput
+sudo arp-scan -l -I nTap
+
+read  -n 1 -p "----> START filtered tcpdump (PRESS ANY KEY)" mainmenuinput
 
 filter="not arp and not stp and not host $(hostname -I | sed "s/.$//g" | sed "s/ / and not host /g") and not broadcast and not multicast"
 sudo tcpdump -q -i nTap -ttttt $filter
