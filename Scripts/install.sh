@@ -1,5 +1,3 @@
-
-
 echo " "
 echo " "
 echo " "
@@ -11,7 +9,7 @@ echo " "
 echo " "
 echo " "
 echo "*************************  UPGRADING APT-GET  *********************"
-sudo apt-get upgrade -y
+sudo apt-get -y dist-upgrade
 
 
 echo " "
@@ -62,26 +60,12 @@ echo " "
 echo "*************************  INSTALLING nmap ************************"
 sudo apt-get --assume-yes install nmap
 
-
 echo " "
 echo " "
 echo " "
 echo " "
 echo " "
 echo " "
+echo " "
 
-
-cp ./files/vimrc ~/.vimrc
-echo ".vimrc created"
-
-cp ./files/motd /etc/motd
-echo "motd created"
-
-cp ./files/selected_editor ~/.selected_editor
-echo "selected_editor created"
-
-cp ./files/jail.local /etc/fail2ban/jail.local
-echo "jail.local created"
-
-cp ./files/binscripts/* ~/bin/
-echo "bin scripts created"
+./copyFiles.sh

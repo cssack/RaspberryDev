@@ -1,6 +1,7 @@
 set smartindent
 set shiftwidth=4
 set tabstop=4
+set hlsearch
 
 syntax on
 map <F6> :w<CR>:tabp<CR>
