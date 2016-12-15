@@ -71,14 +71,6 @@ sudo apt-get --assume-yes install arp-scan
 echo " "
 echo " "
 echo " "
-echo "*************************  INSTALLING git ********************"
-git config --global user.email "raspy@sack.at"
-git config --global user.name "Christian@raspberrypi"
-
-
-echo " "
-echo " "
-echo " "
 echo " "
 echo " "
 echo " "
