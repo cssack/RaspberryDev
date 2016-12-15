@@ -33,7 +33,13 @@ cp $DIR/_configFiles/selected_editor ~/.selected_editor
 echo "--> COPY jail.local"
 sudo cp $DIR/_configFiles/jail.local /etc/fail2ban/jail.local
 
+echo "--> COPY ieee-oui.txt"
+sudo cp $DIR/_configFiles/ieee-oui.txt /usr/share/arp-scan/ieee-oui.txt
+ 
 echo "--> COPY bin files"
 mkdir -p ~/bin/
 ln -s $DIR/_binFiles/* ~/bin/
 ln -s "$DIR/copyFiles.sh" "${HOME}/bin/cs_reload"
+
+echo "--> COPY README"
+cp $DIR/README ~/README
