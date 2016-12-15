@@ -1,3 +1,5 @@
 [user]
 	email = raspy@sack.at
 	name = Christian@raspberrypi
+[push]
+	default = simple
