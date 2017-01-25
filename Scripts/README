@@ -1,0 +1,19 @@
+TODO:
+--> Add User cs
+	: sudo adduser cs
+	: sudo usermod -aG sudo cs
+	: sudo userdel -r pi
+
+-->	Change Hostname
+	: sudo vim /etc/hostname
+	: sudo vim /etc/hosts
+
+--> Automatic Updates
+	: crontap -e
+	: add line: 0 22 * * * bin/cs_update
+
+-->	raspi-config
+	: Expand File system 
+
+--> Add to sudoers file:
+	: cs ALL=NOPASSWD:ALL

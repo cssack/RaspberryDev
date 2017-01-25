@@ -1,0 +1,15 @@
+# "bantime" is the number of seconds that a host is banned.
+bantime  = 60
+
+# A host is banned if it has generated "maxretry" during the last "findtime"
+# seconds
+findtime = 60
+maxretry = 3
+
+[ssh]
+
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 6
