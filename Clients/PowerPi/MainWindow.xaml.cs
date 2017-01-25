@@ -51,7 +51,7 @@ namespace PowerPi
 
 		private void InitPowerPi()
 		{
-			PowerPi = new PowerPiController("Sapi");
+			PowerPi = new PowerPiController("protopi");
 		}
 
 		private void Load(object sender, RoutedEventArgs e)

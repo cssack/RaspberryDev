@@ -5,17 +5,17 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:ppi="http://protocol.powerpi.com/"
 		mc:Ignorable="d" FooterVisibility="Collapsed" IconVisibility="Collapsed"
-		Title="Power Pi" Height="420" Width="525" x:Name="Wind" Padding="20,10,20,20">
+		Title="Power Pi" Height="490" Width="525" x:Name="Wind" Padding="20,10,20,20">
 	<CsWindow.HeaderTemplate>
 		<DataTemplate DataType="CsWindow">
 			<Border Background="Transparent" AWindowDragMove.IsActive="True" DataContext="{Binding ElementName=Wind}">
 				<Grid>
-					<TextBlock Text="{Binding Path=Title}" FontSize="28" Margin="5,5,0,0" />
+					<TextBlock Text="{Binding Path=Title}" FontSize="28" Margin="15,5,0,0" />
 				</Grid>
 			</Border>
 		</DataTemplate>
 	</CsWindow.HeaderTemplate>
-	<Grid DataContext="{Binding ElementName=Wind, Path=PowerPi}">
+	<Grid DataContext="{Binding ElementName=Wind, Path=PowerPi}" Margin="0,0,-10,0">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
@@ -29,7 +29,7 @@
 			</DoubleEditor>
 		</EditorGroup>
 		<EditorGroup Grid.Row="1" Header="State">
-			<ItemsControl ItemsSource="{Binding Path=Gpio.Items}" Margin="0,0,-20,0" HorizontalAlignment="Left">
+			<ItemsControl ItemsSource="{Binding Path=Gpio.Items}" Margin="0,0,-20,0" HorizontalAlignment="Left" Visibility="{Binding Path=LatestState.HasBeenLoaded, Converter={StaticResource GConv-BoolVisibility}}">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
 						<UniformGrid Columns="2" Grid.IsSharedSizeScope="True" />
@@ -63,7 +63,7 @@
 			</ItemsControl>
 		</EditorGroup>
 		<StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
-			<GlyphIconButton Icon="E_Upload" Click="Upload" Content="Upload" />
+			<GlyphIconButton Icon="E_Upload" IconColor="{StaticResource GColor-Blue}" Click="Upload" Content="Upload" Visibility="{Binding Path=Gpio.HasBeenChanged, Converter={StaticResource GConv-BoolVisibility}}" />
 			<GlyphIconButton Icon="E_Download" Click="Load" Content="Download" />
 		</StackPanel>
 
