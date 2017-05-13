@@ -50,7 +50,7 @@ cp -n configureFiles/gitconfig ~/.gitconfig
 echo ">   ~/bin"
 rm -r ~/bin/ | sed -r 's/^/   /'
 mkdir -p ~/bin/ | sed -r 's/^/   /'
-ln -s -r ../bin/* ~/bin/ | sed -r 's/^/   /'
+ln -s -r ../_bin/* ~/bin/ | sed -r 's/^/   /'
 
 
 
