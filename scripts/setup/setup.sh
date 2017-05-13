@@ -8,12 +8,19 @@ if [ "$(whoami)" == 'root' ]; then
 	fi
 
 
+	echo "adduser cs"
+	echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 	id -u cs &>/dev/null || useradd cs 
 	read -s -p "enter password for user cs: " pw
+	echo
 	echo "cs:$pw" | chpasswd
 	adduser cs sudo
 	sh -c "echo 'cs ALL=NOPASSWD: ALL' >> /etc/sudoers"
+	mkdir /home/cs
+	cd /home/cs
+	sudo -u cs git clone https://github.com/cssack/RaspberryDev.git
 	echo ">>>>>>>>> change to user 'cs' <<<<<<<<<<"
+	echo "then execute setup.sh"
 	exit 1;
 fi
 
