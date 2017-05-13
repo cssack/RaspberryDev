@@ -9,8 +9,10 @@ if [ "$(whoami)" == 'root' ]; then
 
 
 	id -u cs &>/dev/null || useradd cs 
-	sudo adduser cs sudo
-	sudo sh -c "echo 'cs ALL=NOPASSWD: ALL' >> /etc/sudoers"
+	read -s "enter password for user cs: " pw
+	echo "cs:$pw" | chpasswd
+	adduser cs sudo
+	sh -c "echo 'cs ALL=NOPASSWD: ALL' >> /etc/sudoers"
 	echo ">>>>>>>>> change to user 'cs' <<<<<<<<<<"
 	exit 1;
 fi
