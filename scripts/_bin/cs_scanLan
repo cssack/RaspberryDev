@@ -1,5 +1,11 @@
 #!/bin/bash
 
+cd $(dirname `realpath $0`)
+if [ "$(whoami)" == 'root' ]; then
+	echo "do not use sudo."
+	exit 1;
+fi
+
 for ip in `hostname -I`; do
 	if [ ${ip:0:7} == "169.254" ]; then
 		continue

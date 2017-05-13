@@ -1,5 +1,11 @@
 #!/bin/bash
 
+cd $(dirname `realpath $0`)
+if [ "$(whoami)" == 'root' ]; then
+	echo "do not use sudo."
+	exit 1;
+fi
+
 ./cs_scanWlan
 
 
