@@ -31,13 +31,13 @@ sudo ifconfig wlan0 up | sed 's/^/   /'
 
 
 echo "> config  interfaces"
-sudo grep -q "auto wlan0" "/etc/network/interfaces" || sudo echo "auto wlan0" >> /etc/network/interfaces
+sudo grep -q "auto wlan0" "/etc/network/interfaces" || sudo sh -c "echo 'auto wlan' >> /etc/network/interfaces"
 sudo sed -i 's/iface wlan0 inet manual/iface wlan0 inet dhcp/' /etc/network/interfaces
 
 
 echo "> config  wpa_supplicant.conf"
-sudo echo "country=GB\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\n\n" > /etc/wpa_supplicant/wpa_supplicant.conf
-sudo wpa_passphrase $wlanName $wlanPwd >> /etc/wpa_supplicant/wpa_supplicant.conf
+sudo sh -c "echo 'country=GB\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\n\n' > /etc/wpa_supplicant/wpa_supplicant.conf"
+sudo sh -c "wpa_passphrase $wlanName $wlanPwd >> /etc/wpa_supplicant/wpa_supplicant.conf"
 
 
 sudo iwconfig wlan0 essid $wlanName 
