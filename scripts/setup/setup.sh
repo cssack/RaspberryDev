@@ -16,8 +16,7 @@ if [ "$(whoami)" == 'root' ]; then
 	echo "cs:$pw" | chpasswd
 	adduser cs sudo
 	sh -c "echo 'cs ALL=NOPASSWD: ALL' >> /etc/sudoers"
-	mkdir /home/cs
-	cd /home/cs
+	mkhomedir_helper cs
 	sudo -u cs git clone https://github.com/cssack/RaspberryDev.git
 	echo ">>>>>>>>> change to user 'cs' <<<<<<<<<<"
 	echo "then execute setup.sh"
