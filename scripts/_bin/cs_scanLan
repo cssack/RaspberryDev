@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for ip in `hostname -I`; do
+	if [ ${ip:0:7} == "169.254" ]; then
+		continue
+	fi
+	echo "scan   $ip"
+	echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+	sudo nmap -sn -PR $ip/24 | sed -r 's/^Starting.*//;s/^Nmap done:.*//;s/^Host is up.*//;s/MAC Address: //' | tr '\n' ' ' | sed 's/Nmap scan report for /\n/g' | sed -n -r 's/([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)  ([0-9A-F\:]+) \((.*?)\)/   \1\t-\t\2\t\3/p;s/(.*?) \((.*?)\)  ([0-9A-F:]+) \((.*?)\)/   \2\t\1\t\3\t\4/p' | column -t -s '	'
+	echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+done

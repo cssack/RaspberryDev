@@ -1,0 +1,43 @@
+#!/bin/bash
+
+./cs_scanWlans
+
+
+echo
+echo
+echo "Enter username and password"
+echo "- - - - - - - - - - - - - - - - - - - - - - - "
+read -p "   SSID:    " wlanName
+read -p "   Password:" -s wlanPwd
+echo
+echo "- - - - - - - - - - - - - - - - - - - - - - - "
+echo 
+echo 
+
+
+echo "> stop    wpa_supplicant"
+sudo pkill wpa_supplicant | sed 's/^/   /'
+echo "> restart wlan0"
+sudo ifconfig wlan0 down | sed 's/^/   /'
+sudo ifconfig wlan0 up | sed 's/^/   /'
+
+
+
+
+echo "> config  interfaces"
+grep -q "auto wlan0" "/etc/network/interfaces" || echo "auto wlan0" >> /etc/network/interfaces
+sed -i 's/iface wlan0 inet manual/iface wlan0 inet dhcp/' /etc/network/interfaces
+
+
+echo "> config  wpa_supplicant.conf"
+echo "country=GB\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\n\n" > /etc/wpa_supplicant/wpa_supplicant.conf
+sudo wpa_passphrase $wlanName $wlanPwd >> /etc/wpa_supplicant/wpa_supplicant.conf
+
+
+sudo iwconfig wlan0 essid $wlanName 
+
+echo "> start    wpa_supplicant"
+sudo wpa_supplicant -B -Dnl80211 -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+
+echo "> start    DHCP"
+sudo dhclient wlan0

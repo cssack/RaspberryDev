@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo Scan SSIDs:
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+sudo iwlist wlan0 scanning | tr '\n' ' ' | sed 's/Cell/\nCell/g' | sed -n -r 's/.*?Address: ([0-9A-F:]+).*?Channel:([0-9]+).*?Frequency:([0-9\.]+ GHz).*?Quality=([0-9\/]+).*?ESSID:"(.*?)".*/   \5\t[Signal: \4; Address: \1; Channel: \2 (\3)]/p' | sort | column -t -s '	' --
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
