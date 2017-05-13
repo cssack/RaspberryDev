@@ -8,6 +8,7 @@ fi
 
 if [ "$(whoami)" != 'cs' ]; then
 	if id "cs" >/dev/null 2>&1; then
+		echo "Switch to cs user."
 		exit 1;
 	fi
 
@@ -30,11 +31,6 @@ if id "pi" >/dev/null 2>&1; then
 	echo
 	echo
 fi
-
-
-
-
-
 
 ./sysupdate.sh
 ./programs.sh

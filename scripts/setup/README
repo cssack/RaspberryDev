@@ -1,0 +1,4 @@
+TODO:
+--> Automatic Updates
+	: crontap -e
+	: add line: 0 22 * * * bin/cs_update
