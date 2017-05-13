@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./cs_scanWlans
+./cs_scanWlan
 
 
 echo
