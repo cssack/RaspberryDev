@@ -15,9 +15,9 @@
 ************************************************************************
 
 USE:
-	> sw           = cs_scanwlan
-	> sl           = cs_scanlan
-	> cs_configure = update scripts
+	> sw  = cs_scanwlan
+	> sl  = cs_scanlan
+	> up  = update scripts
 
 
 
