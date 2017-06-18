@@ -11,7 +11,10 @@ echo "SYSUPDATE > updateing apt-get"
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 sudo apt-get update | sed 's/^/    /'
 
-
-echo "SYSUPDATE > upgrading apt-get"
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
-sudo apt-get -y dist-upgrade | sed 's/^/    /'
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+echo "use following command to do a dist-upgrade"
+echo "    BE CAREFUL"
+echo "    sudo apt-get -y dist-upgrade"
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
