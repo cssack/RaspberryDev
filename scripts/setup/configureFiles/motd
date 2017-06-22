@@ -18,6 +18,7 @@ USE:
    > sl  = cs_scanlan
    > up  = update scripts
 
-   > install-lcd  = Install the "kuman-LCD 3.5 Zoll Display"
+   > install-lcd  = Install "kuman-LCD"
+   > deinstall-lcd  = Deinstall "kuman-LCD"
 
 

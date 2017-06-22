@@ -45,8 +45,5 @@ echo ">   completed"
 
 echo;echo;echo "install driver"
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
-sudo rm -r /home/$user/LCD-show
-sudo tar zxvf LCD-show-170315.tar.gz -C /home/$user
-
-cd /home/$user/LCD-show
+cd LCD-show
 sudo ./LCD35-show

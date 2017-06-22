@@ -30,6 +30,15 @@ then
 	:
 else
 	echo -e "\n\n\ncat .motd" >> ~/.bashrc
+	echo -e "
+if [ -f readme ]; then
+	echo;echo;echo
+	echo readme:
+	echo - - - - - - - - - - - - - - - - - - - -
+	cat readme
+	echo - - - - - - - - - - - - - - - -  - - - -
+	echo;echo;echo
+fi" >> ~/.bashrc
 fi
 
 
@@ -64,4 +73,4 @@ sudo chmod g+rx $targetBinFolder/*
 
 
 echo ">   readme"
-cp README ~/README
+cp readme ~/readme

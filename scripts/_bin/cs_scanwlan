@@ -6,7 +6,33 @@ if [ "$(whoami)" == 'root' ]; then
 	exit 1;
 fi
 
-echo Scan SSIDs:
-echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
-sudo iwlist wlan0 scanning | tr '\n' ' ' | sed 's/Cell/\nCell/g' | sed -n -r 's/.*?Address: ([0-9A-F:]+).*?Channel:([0-9]+).*?Frequency:([0-9\.]+ GHz).*?Quality=([0-9\/]+).*?ESSID:"(.*?)".*/   \5\t[Signal: \4; Address: \1; Channel: \2 (\3)]/p' | sort | column -t -s '	' --
-echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+while getopts ":sh" opt; do
+	case $opt in
+	h)
+		echo Call $0 with \"-s\" if you want a small output.
+		exit 0
+		;;
+	s)
+		s=1
+		;;
+	\?)
+		echo "Invalid option: -$OPTARG" >&2
+		exit 1
+		;;
+	:)
+		echo "Option -$OPTARG requires an argument." >&2
+		exit 1
+		;;
+	esac
+done
+
+if [ -n "$s" ]; then
+	sudo iwlist wlan0 scanning | tr '\n' ' ' | sed 's/Cell/\nCell/g' | sed -n -r 's/.*?Address: ([0-9A-F:]+).*?Channel:([0-9]+).*?Frequency:([0-9\.]+ GHz).*?Quality=([0-9\/]+).*?ESSID:"(.*?)".*/\4\t\5\t\1(\2)/p' | sort -r --version-sort | column -t -s '	' --
+else
+
+	echo Scan SSIDs:
+	echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+	sudo iwlist wlan0 scanning | tr '\n' ' ' | sed 's/Cell/\nCell/g' | sed -n -r 's/.*?Address: ([0-9A-F:]+).*?Channel:([0-9]+).*?Frequency:([0-9\.]+ GHz).*?Quality=([0-9\/]+).*?ESSID:"(.*?)".*/   \5\t[Signal: \4; Address: \1; Channel: \2 (\3)]/p' | sort | column -t -s '	' --
+	echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+fi
