@@ -1,11 +1,13 @@
 #!/bin/bash
 
+
 cd $(dirname `realpath $0`)
 if [ "$(whoami)" == 'root' ]; then
 	echo "DO NOT use sudo"
 	exit 1;
 fi
 
+targetBinFolder=/usr/local/bin
 echo "PULL repository"
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 git pull | sed 's/^/    /'
@@ -47,10 +49,10 @@ cp -n configureFiles/gitconfig ~/.gitconfig
 
 
 
-echo ">   ~/bin"
-rm -r ~/bin/ | sed -r 's/^/   /'
-mkdir -p ~/bin/ | sed -r 's/^/   /'
-ln -s -r ../_bin/* ~/bin/ | sed -r 's/^/   /'
+echo ">   $targetBinFolder"
+rm -r $targetBinFolder/* | sed -r 's/^/   /'
+mkdir -p $targetBinFolder/ | sed -r 's/^/   /'
+ln -s -r ../_bin/* $targetBinFolder/ | sed -r 's/^/   /'
 
 
 
