@@ -1,24 +1,23 @@
-
-************************************************************************
-***************                                          ***************
-***************  Admin: Christian Sack                   ***************
-***************                                          ***************
-***************  Tel:   0699 17944444                    ***************
-***************  Mail:  christian@sack.at                ***************
-***************  Web:   christian.sack.at                ***************
-***************                                          ***************
-***************                                          ***************
-***************  Do your stuff smart and fast!           ***************
-***************  Don't forget to test your changes!      ***************
-***************  Take care of your responsibilities!     ***************
-***************                                          ***************
-************************************************************************
+**********************************************
+**                                          **
+**  Admin: Christian Sack                   **
+**                                          **
+**  Tel:   0699 17944444                    **
+**  Mail:  christian@sack.at                **
+**  Web:   christian.sack.at                **
+**                                          **
+**                                          **
+**  Do your stuff smart and fast!           **
+**  Don't forget to test your changes!      **
+**  Take care of your responsibilities!     **
+**                                          **
+**********************************************
 
 USE:
-	> sw  = cs_scanwlan
-	> sl  = cs_scanlan
-	> up  = update scripts
+   > sw  = cs_scanwlan
+   > sl  = cs_scanlan
+   > up  = update scripts
 
-
+   > install-lcd  = Install the "kuman-LCD 3.5 Zoll Display"
 
 

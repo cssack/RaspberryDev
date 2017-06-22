@@ -24,7 +24,13 @@ sudo cp configureFiles/vimrc /root/.vimrc
 
 
 echo ">   motd"
-sudo cp configureFiles/motd /etc/motd
+cp configureFiles/motd ~/.motd
+if grep -xq ".*cat \.motd.*" ~/.bashrc 
+then 
+	:
+else
+	echo -e "\n\n\ncat .motd" >> ~/.bashrc
+fi
 
 
 
@@ -50,9 +56,10 @@ cp -n configureFiles/gitconfig ~/.gitconfig
 
 
 echo ">   $targetBinFolder"
-rm -r $targetBinFolder/* | sed -r 's/^/   /'
-mkdir -p $targetBinFolder/ | sed -r 's/^/   /'
-ln -s -r ../_bin/* $targetBinFolder/ | sed -r 's/^/   /'
+sudo rm -r $targetBinFolder/* | sed -r 's/^/   /'
+sudo mkdir -p $targetBinFolder/ | sed -r 's/^/   /'
+sudo ln -s -r ../_bin/* $targetBinFolder/ | sed -r 's/^/   /'
+sudo chmod g+rx $targetBinFolder/*
 
 
 
